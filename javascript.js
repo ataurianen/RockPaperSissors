@@ -41,37 +41,79 @@ function playRound(playerSelection, computerSelection) {
 
     if (playerSelection == 'rock') {
         if (computerSelection == 'paper') {
-            return 'You Loose! Paper beats Rock';
+            console.log('You Loose! Paper beats Rock');
+            return 'Computer Wins!';
         }
         else if (computerSelection == 'sissors') {
-            return 'You win! Rock beats Sissors';
+            console.log('You win! Rock beats Sissors');
+            return 'Player Wins!';
         }
         else {
+            console.log('Tie game!');
             return 'Tie game!';
         }
     }
     else if (playerSelection == 'paper') {
         if (computerSelection == 'rock') {
-            return 'You win! Paper beats Rock';
+            console.log('You win! Paper beats Rock');
+            return 'Player Wins!';
         }
         else if (computerSelection == 'sissors') {
-            return 'You loose! Sissors beats Rock';
+            console.log('You loose! Sissors beats Rock');
+            return 'Computer Wins!';
         }
         else {
+            console.log('Tie game!');
             return 'Tie game!';
         }
     }
     else {
         if (computerSelection == 'rock') {
-            return 'You loose! Rock beats Sissors';
+            console.log('You loose! Rock beats Sissors');
+            return 'Computer Wins!';
         }
         else if (computerSelection == 'paper') {
-            return 'You win! Sissors beats Paper';
+            console.log('You win! Sissors beats Paper');
+            return 'Player Wins!';
         }
         else {
-            return 'Tie game!'
+            console.log('Tie game!');
+            return 'Tie game!';
         }
     }
   }
 
- 
+ function game() {
+    let playerWins = 0
+    let computerWins = 0
+    let tieGames = 0
+
+    for (let i = 0; i < 5; i++) {
+        result = playRound(playerSelection(), computerSelection());
+
+        if (result == 'Player Wins!') {
+            playerWins++;
+        }
+        else if (result == 'Computer Wins!') {
+            computerWins++;
+        }
+        else {
+            tieGames++;
+        }
+    }
+    console.log("Player Wins: " + playerWins);
+    console.log("Computer Wins: " + computerWins);
+    console.log("Tie Games: " + tieGames);
+
+    if (playerWins > computerWins) {
+        console.log("Player wins the match");
+    }
+    else if (computerWins > playerWins) {
+        console.log("COmputer wins the match");
+    }
+    else {
+        console.log("Match is tied");
+    }
+ }
+
+ game()
