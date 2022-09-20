@@ -5,15 +5,15 @@ function computerSelection () {
     let choice = Math.floor(Math.random() * (max - min + 1) + min);
 
     if (choice == 1) {
-        return "Rock";
+        return "rock";
     }
 
     if (choice == 2) {
-        return "Paper";
+        return "paper";
     }
 
     if (choice == 3) {
-        return "Sissors";
+        return "sissors";
     }
 }
 
@@ -37,7 +37,41 @@ function playerSelection () {
 }
 
 function playRound(playerSelection, computerSelection) {
-    // your code here!
+    // Should play one round of the Rock, Paper, Sissors
+
+    if (playerSelection == 'rock') {
+        if (computerSelection == 'paper') {
+            return 'You Loose! Paper beats Rock';
+        }
+        else if (computerSelection == 'sissors') {
+            return 'You win! Rock beats Sissors';
+        }
+        else {
+            return 'Tie game!';
+        }
+    }
+    else if (playerSelection == 'paper') {
+        if (computerSelection == 'rock') {
+            return 'You win! Paper beats Rock';
+        }
+        else if (computerSelection == 'sissors') {
+            return 'You loose! Sissors beats Rock';
+        }
+        else {
+            return 'Tie game!';
+        }
+    }
+    else {
+        if (computerSelection == 'rock') {
+            return 'You loose! Rock beats Sissors';
+        }
+        else if (computerSelection == 'paper') {
+            return 'You win! Sissors beats Paper';
+        }
+        else {
+            return 'Tie game!'
+        }
+    }
   }
 
-  console.log(playerSelection())
+ 
