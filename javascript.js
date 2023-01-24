@@ -30,10 +30,7 @@ function playerSelection () {
             alert("Not a valid selection");
         }
     }
-    
-    
-
-    
+       
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -41,79 +38,72 @@ function playRound(playerSelection, computerSelection) {
 
     if (playerSelection == 'rock') {
         if (computerSelection == 'paper') {
-            console.log('You Loose! Paper beats Rock');
-            return 'Computer Wins!';
+            computerWins++;
+            return 'You Loose! Paper beats Rock';
         }
         else if (computerSelection == 'sissors') {
-            console.log('You win! Rock beats Sissors');
-            return 'Player Wins!';
+            playerWins++;
+            return 'You win! Rock beats Sissors';
         }
         else {
-            console.log('Tie game!');
             return 'Tie game!';
         }
     }
     else if (playerSelection == 'paper') {
         if (computerSelection == 'rock') {
-            console.log('You win! Paper beats Rock');
-            return 'Player Wins!';
+            playerWins++;
+            return 'You win! Paper beats Rock';
         }
         else if (computerSelection == 'sissors') {
-            console.log('You loose! Sissors beats Rock');
-            return 'Computer Wins!';
+            computerWins++;
+            return 'You loose! Sissors beats Rock';
         }
         else {
-            console.log('Tie game!');
             return 'Tie game!';
         }
     }
     else {
         if (computerSelection == 'rock') {
-            console.log('You loose! Rock beats Sissors');
-            return 'Computer Wins!';
+            computerWins++;
+            return 'You loose! Rock beats Sissors';
         }
         else if (computerSelection == 'paper') {
-            console.log('You win! Sissors beats Paper');
-            return 'Player Wins!';
+            playerWins++;
+            return 'You win! Sissors beats Paper';
         }
         else {
-            console.log('Tie game!');
             return 'Tie game!';
         }
     }
-  }
+}
 
- function game() {
-    let playerWins = 0
-    let computerWins = 0
-    let tieGames = 0
+function reset() {
+    playerWins = 0;
+    computerWins = 0;
+}
 
-    for (let i = 0; i < 5; i++) {
-        result = playRound(playerSelection(), computerSelection());
+const rockBtn = document.querySelector('#rock-btn');
+const paperBtn = document.querySelector('#paper-btn');
+const sissorsBtn = document.querySelector('#sissors-btn');
+const results = document.querySelector('#results')
 
-        if (result == 'Player Wins!') {
-            playerWins++;
-        }
-        else if (result == 'Computer Wins!') {
-            computerWins++;
-        }
-        else {
-            tieGames++;
-        }
-    }
-    console.log("Player Wins: " + playerWins);
-    console.log("Computer Wins: " + computerWins);
-    console.log("Tie Games: " + tieGames);
+results.setAttribute('style', 'white-space:pre');
 
-    if (playerWins > computerWins) {
-        console.log("Player wins the match");
-    }
-    else if (computerWins > playerWins) {
-        console.log("COmputer wins the match");
-    }
-    else {
-        console.log("Match is tied");
-    }
- }
+winnerDiv = document.createElement('div');
+computerWins = 0;
+playerWins = 0;
 
- game()
+rockBtn.addEventListener('click', function(e) {
+results.textContent = playRound('rock',computerSelection());
+results.textContent += "\nPlayer Wins: " + playerWins + " Computer Wins: " + computerWins;
+});
+
+paperBtn.addEventListener('click', function(e) {
+results.textContent = playRound('paper',computerSelection());
+results.textContent += "\nPlayer Wins: " + playerWins + " Computer Wins: " + computerWins;
+});
+
+sissorsBtn.addEventListener('click', function(e) {
+results.textContent = playRound('sissors',computerSelection());
+results.textContent += "\nPlayer Wins: " + playerWins + " Computer Wins: " + computerWins;
+});
