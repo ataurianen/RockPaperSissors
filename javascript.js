@@ -82,6 +82,11 @@ function reset() {
     computerWins = 0;
 }
 
+function displayWinner(nameOfWinner) {
+    results.textContent += "\n" + nameOfWinner + " has won the game!";
+    reset();
+}
+
 const rockBtn = document.querySelector('#rock-btn');
 const paperBtn = document.querySelector('#paper-btn');
 const sissorsBtn = document.querySelector('#sissors-btn');
@@ -96,14 +101,32 @@ playerWins = 0;
 rockBtn.addEventListener('click', function(e) {
 results.textContent = playRound('rock',computerSelection());
 results.textContent += "\nPlayer Wins: " + playerWins + " Computer Wins: " + computerWins;
+if (playerWins == 5) {
+    displayWinner("Player");
+}
+else if (computerWins == 5) {
+    displayWinner("Computer");
+}
 });
 
 paperBtn.addEventListener('click', function(e) {
 results.textContent = playRound('paper',computerSelection());
 results.textContent += "\nPlayer Wins: " + playerWins + " Computer Wins: " + computerWins;
+if (playerWins == 5) {
+    displayWinner("Player");
+}
+else if (computerWins == 5) {
+    displayWinner("Computer");
+}
 });
 
 sissorsBtn.addEventListener('click', function(e) {
 results.textContent = playRound('sissors',computerSelection());
 results.textContent += "\nPlayer Wins: " + playerWins + " Computer Wins: " + computerWins;
+if (playerWins == 5) {
+    displayWinner("Player");
+}
+else if (computerWins == 5) {
+    displayWinner("Computer");
+}
 });
